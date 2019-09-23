@@ -1,0 +1,20 @@
+platformName: Android
+
+platformVersion: 9.1.0.112(C00E110R1P7)
+udid: 8GPDU18719000594
+deviceName: HUAWEI nova 3e
+
+appname: cxjz.apk
+noReset: True
+unicodeKeyboard: True
+resetKeyboard: True
+
+automationName: uiautomator2
+
+fullReset: False
+chromeOptions: {'androidProcess': 'com.tencent.mm:appbrand0'}
+
+appPackage: com.eg.android.AlipayGphone
+appActivity: com.eg.android.AlipayGphone.AlipayLogin
+ip: 127.0.0.1
+port: 4723

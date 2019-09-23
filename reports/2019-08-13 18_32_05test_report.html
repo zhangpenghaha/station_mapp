@@ -1,0 +1,801 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <title>微信车站通测试报告!</title>
+    <meta name="generator" content="BSTestRunner 0.8.4"/>
+    <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.0/css/bootstrap.min.css">
+    
+<style type="text/css" media="screen">
+
+/* -- css div popup ------------------------------------------------------------------------ */
+.popup_window {
+    display: none;
+    position: relative;
+    left: 0px;
+    top: 0px;
+    /*border: solid #627173 1px; */
+    padding: 10px;
+    background-color: #99CCFF;
+    font-family: "Lucida Console", "Courier New", Courier, monospace;
+    text-align: left;
+    font-size: 10pt;
+    width: 500px;
+}
+
+/* -- report ------------------------------------------------------------------------ */
+
+#show_detail_line .label {
+    font-size: 85%;
+    cursor: pointer;
+}
+
+#show_detail_line {
+    margin: 2em auto 1em auto;
+}
+
+#total_row  { font-weight: bold; }
+.hiddenRow  { display: none; }
+.testcase   { margin-left: 2em; }
+
+</style>
+
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="http://cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="http://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+<body>
+<script language="javascript" type="text/javascript"><!--
+output_list = Array();
+
+/* level - 0:Summary; 1:Failed; 2:All */
+function showCase(level) {
+    trs = document.getElementsByTagName("tr");
+    for (var i = 0; i < trs.length; i++) {
+        tr = trs[i];
+        id = tr.id;
+        if (id.substr(0,2) == 'ft') {
+            if (level < 1) {
+                tr.className = 'hiddenRow';
+            }
+            else {
+                tr.className = '';
+            }
+        }
+        if (id.substr(0,2) == 'pt') {
+            if (level > 1) {
+                tr.className = '';
+            }
+            else {
+                tr.className = 'hiddenRow';
+            }
+        }
+    }
+}
+
+
+function showClassDetail(cid, count) {
+    var id_list = Array(count);
+    var toHide = 1;
+    for (var i = 0; i < count; i++) {
+        tid0 = 't' + cid.substr(1) + '.' + (i+1);
+        tid = 'f' + tid0;
+        tr = document.getElementById(tid);
+        if (!tr) {
+            tid = 'p' + tid0;
+            tr = document.getElementById(tid);
+        }
+        id_list[i] = tid;
+        if (tr.className) {
+            toHide = 0;
+        }
+    }
+    for (var i = 0; i < count; i++) {
+        tid = id_list[i];
+        if (toHide) {
+            document.getElementById('div_'+tid).style.display = 'none'
+            document.getElementById(tid).className = 'hiddenRow';
+        }
+        else {
+            document.getElementById(tid).className = '';
+        }
+    }
+}
+
+
+function showTestDetail(div_id){
+    var details_div = document.getElementById(div_id)
+    var displayState = details_div.style.display
+    // alert(displayState)
+    if (displayState != 'block' ) {
+        displayState = 'block'
+        details_div.style.display = 'block'
+    }
+    else {
+        details_div.style.display = 'none'
+    }
+}
+
+
+function html_escape(s) {
+    s = s.replace(/&/g,'&amp;');
+    s = s.replace(/</g,'&lt;');
+    s = s.replace(/>/g,'&gt;');
+    return s;
+}
+
+/* obsoleted by detail in <div>
+function showOutput(id, name) {
+    var w = window.open("", //url
+                    name,
+                    "resizable,scrollbars,status,width=800,height=450");
+    d = w.document;
+    d.write("<pre>");
+    d.write(html_escape(output_list[id]));
+    d.write("\n");
+    d.write("<a href='javascript:window.close()'>close</a>\n");
+    d.write("</pre>\n");
+    d.close();
+}
+*/
+--></script>
+
+<div class="container">
+    <div class='heading'>
+<h1>微信车站通测试报告!</h1>
+<p><strong>Start Time:</strong> 2019-08-13 18:32:05</p>
+<p><strong>Duration:</strong> 0:41:29.563342</p>
+<p><strong>Status:</strong> <span class="text text-success">Pass <strong>68</strong></span> <span class="text text-danger">Failure <strong>4</strong></span> <span class="text text-warning">Error <strong>2</strong></span></p>
+
+<p class='description'>测试个人中心模块!</p>
+</div>
+
+
+    
+<p id='show_detail_line'>
+<span class="label label-primary" onclick="showCase(0)">Summary</span>
+<span class="label label-danger" onclick="showCase(1)">Failed</span>
+<span class="label label-default" onclick="showCase(2)">All</span>
+</p>
+<table id='result_table' class="table">
+    <thead>
+        <tr id='header_row'>
+            <th>Test Group/Test case</td>
+            <th>Count</td>
+            <th>Pass</td>
+            <th>Fail</td>
+            <th>Error</td>
+            <th>View</td>
+        </tr>
+    </thead>
+    <tbody>
+        
+<tr class='text text-success'>
+    <td>tc_1_首页.tc_首页</td>
+    <td>35</td>
+    <td>35</td>
+    <td>0</td>
+    <td>0</td>
+    <td><a class="btn btn-xs btn-primary"href="javascript:showClassDetail('c1',35)">Detail</a></td>
+</tr>
+
+<tr id='pt1.1' class='hiddenRow'>
+    <td class='text text-success'><div class='testcase'>test_002_点击切换站点toast切换站点_武昌站</div></td>
+    <td colspan='5' align='center'>pass</td>
+</tr>
+
+<tr id='pt1.2' class='hiddenRow'>
+    <td class='text text-success'><div class='testcase'>test_005_站点切换页面调转</div></td>
+    <td colspan='5' align='center'>pass</td>
+</tr>
+
+<tr id='pt1.3' class='hiddenRow'>
+    <td class='text text-success'><div class='testcase'>test_007_首页天气页面跳转</div></td>
+    <td colspan='5' align='center'>pass</td>
+</tr>
+
+<tr id='pt1.4' class='hiddenRow'>
+    <td class='text text-success'><div class='testcase'>test_010_banner车站流量跳转</div></td>
+    <td colspan='5' align='center'>pass</td>
+</tr>
+
+<tr id='pt1.5' class='hiddenRow'>
+    <td class='text text-success'><div class='testcase'>test_011_车站流量旅客流量字段检查</div></td>
+    <td colspan='5' align='center'>pass</td>
+</tr>
+
+<tr id='pt1.6' class='hiddenRow'>
+    <td class='text text-success'><div class='testcase'>test_012_车站流量车次流量字段检查</div></td>
+    <td colspan='5' align='center'>pass</td>
+</tr>
+
+<tr id='pt1.7' class='hiddenRow'>
+    <td class='text text-success'><div class='testcase'>test_013_车站流量到达大屏字段检查</div></td>
+    <td colspan='5' align='center'>pass</td>
+</tr>
+
+<tr id='pt1.8' class='hiddenRow'>
+    <td class='text text-success'><div class='testcase'>test_014_车站流量候车大屏字段检查</div></td>
+    <td colspan='5' align='center'>pass</td>
+</tr>
+
+<tr id='pt1.9' class='hiddenRow'>
+    <td class='text text-success'><div class='testcase'>test_015_车站流量车站大屏跳转</div></td>
+    <td colspan='5' align='center'>pass</td>
+</tr>
+
+<tr id='pt1.10' class='hiddenRow'>
+    <td class='text text-success'><div class='testcase'>test_017_车站流量正晚点查询跳转</div></td>
+    <td colspan='5' align='center'>pass</td>
+</tr>
+
+<tr id='pt1.11' class='hiddenRow'>
+    <td class='text text-success'><div class='testcase'>test_018_车站流量行李托运跳转</div></td>
+    <td colspan='5' align='center'>pass</td>
+</tr>
+
+<tr id='pt1.12' class='hiddenRow'>
+    <td class='text text-success'><div class='testcase'>test_019_车站流量车站地图跳转</div></td>
+    <td colspan='5' align='center'>pass</td>
+</tr>
+
+<tr id='pt1.13' class='hiddenRow'>
+    <td class='text text-success'><div class='testcase'>test_020_切换到测试站点_浠水站</div></td>
+    <td colspan='5' align='center'>pass</td>
+</tr>
+
+<tr id='pt1.14' class='hiddenRow'>
+    <td class='text text-success'><div class='testcase'>test_027_更多服务屏幕跳转</div></td>
+    <td colspan='5' align='center'>pass</td>
+</tr>
+
+<tr id='pt1.15' class='hiddenRow'>
+    <td class='text text-success'><div class='testcase'>test_028_公告详情页面跳转</div></td>
+    <td colspan='5' align='center'>pass</td>
+</tr>
+
+<tr id='pt1.16' class='hiddenRow'>
+    <td class='text text-success'><div class='testcase'>test_029_更多资讯页面跳转</div></td>
+    <td colspan='5' align='center'>pass</td>
+</tr>
+
+<tr id='pt1.17' class='hiddenRow'>
+    <td class='text text-success'><div class='testcase'>test_030_车次号为空toast提示</div></td>
+    <td colspan='5' align='center'>pass</td>
+</tr>
+
+<tr id='pt1.18' class='hiddenRow'>
+    <td class='text text-success'><div class='testcase'>test_031_车次查询摄像头调用</div></td>
+    <td colspan='5' align='center'>pass</td>
+</tr>
+
+<tr id='pt1.19' class='hiddenRow'>
+    <td class='text text-success'><div class='testcase'>test_032_站站查询标签页切换</div></td>
+    <td colspan='5' align='center'>pass</td>
+</tr>
+
+<tr id='pt1.20' class='hiddenRow'>
+    <td class='text text-success'><div class='testcase'>test_033_车次查询标签页切换</div></td>
+    <td colspan='5' align='center'>pass</td>
+</tr>
+
+<tr id='pt1.21' class='hiddenRow'>
+    <td class='text text-success'><div class='testcase'>test_034_时刻查询选择日期页面跳转</div></td>
+    <td colspan='5' align='center'>pass</td>
+</tr>
+
+<tr id='pt1.22' class='hiddenRow'>
+    <td class='text text-success'><div class='testcase'>test_035_时刻查询车次号校验_toast提示</div></td>
+    <td colspan='5' align='center'>pass</td>
+</tr>
+
+<tr id='pt1.23' class='hiddenRow'>
+    <td class='text text-success'><div class='testcase'>test_037_时刻查询_站站查询结果跳转</div></td>
+    <td colspan='5' align='center'>pass</td>
+</tr>
+
+<tr id='pt1.24' class='hiddenRow'>
+    <td class='text text-success'><div class='testcase'>test_038_站站查询_切换起始站点按钮</div></td>
+    <td colspan='5' align='center'>pass</td>
+</tr>
+
+<tr id='pt1.25' class='hiddenRow'>
+    <td class='text text-success'><div class='testcase'>test_045_首页_到达切换</div></td>
+    <td colspan='5' align='center'>pass</td>
+</tr>
+
+<tr id='pt1.26' class='hiddenRow'>
+    <td class='text text-success'><div class='testcase'>test_048_首页_候车切换</div></td>
+    <td colspan='5' align='center'>pass</td>
+</tr>
+
+<tr id='pt1.27' class='hiddenRow'>
+    <td class='text text-success'><div class='testcase'>test_050_车站大屏页面跳转</div></td>
+    <td colspan='5' align='center'>pass</td>
+</tr>
+
+<tr id='pt1.28' class='hiddenRow'>
+    <td class='text text-success'><div class='testcase'>test_060_查看全部跳转站内商业</div></td>
+    <td colspan='5' align='center'>pass</td>
+</tr>
+
+<tr id='pt1.29' class='hiddenRow'>
+    <td class='text text-success'><div class='testcase'>test_065_进站后按钮切换</div></td>
+    <td colspan='5' align='center'>pass</td>
+</tr>
+
+<tr id='pt1.30' class='hiddenRow'>
+    <td class='text text-success'><div class='testcase'>test_068_进站前按钮切换</div></td>
+    <td colspan='5' align='center'>pass</td>
+</tr>
+
+<tr id='pt1.31' class='hiddenRow'>
+    <td class='text text-success'><div class='testcase'>test_075_功能待完善提示</div></td>
+    <td colspan='5' align='center'>pass</td>
+</tr>
+
+<tr id='pt1.32' class='hiddenRow'>
+    <td class='text text-success'><div class='testcase'>test_100_首页军人优先跳转</div></td>
+    <td colspan='5' align='center'>pass</td>
+</tr>
+
+<tr id='pt1.33' class='hiddenRow'>
+    <td class='text text-success'><div class='testcase'>test_105_首页常见问题跳转</div></td>
+    <td colspan='5' align='center'>pass</td>
+</tr>
+
+<tr id='pt1.34' class='hiddenRow'>
+    <td class='text text-success'><div class='testcase'>test_110_首页服务评价跳转</div></td>
+    <td colspan='5' align='center'>pass</td>
+</tr>
+
+<tr id='pt1.35' class='hiddenRow'>
+    <td class='text text-success'><div class='testcase'>test_115_首页关于我们跳转</div></td>
+    <td colspan='5' align='center'>pass</td>
+</tr>
+
+<tr class='text text-success'>
+    <td>tc_20_行程.tc_行程</td>
+    <td>2</td>
+    <td>2</td>
+    <td>0</td>
+    <td>0</td>
+    <td><a class="btn btn-xs btn-primary"href="javascript:showClassDetail('c2',2)">Detail</a></td>
+</tr>
+
+<tr id='pt2.1' class='hiddenRow'>
+    <td class='text text-success'><div class='testcase'>test_1_添加行程弹出选择框</div></td>
+    <td colspan='5' align='center'>pass</td>
+</tr>
+
+<tr id='pt2.2' class='hiddenRow'>
+    <td class='text text-success'><div class='testcase'>test_2_手动添加行程跳转到关注行程页</div></td>
+    <td colspan='5' align='center'>pass</td>
+</tr>
+
+<tr class='text text-success'>
+    <td>tc_30_个人中心.tc_个人中心</td>
+    <td>7</td>
+    <td>7</td>
+    <td>0</td>
+    <td>0</td>
+    <td><a class="btn btn-xs btn-primary"href="javascript:showClassDetail('c3',7)">Detail</a></td>
+</tr>
+
+<tr id='pt3.1' class='hiddenRow'>
+    <td class='text text-success'><div class='testcase'>test_202_个人中心跳转</div></td>
+    <td colspan='5' align='center'>pass</td>
+</tr>
+
+<tr id='pt3.2' class='hiddenRow'>
+    <td class='text text-success'><div class='testcase'>test_203_我的资料跳转</div></td>
+    <td colspan='5' align='center'>pass</td>
+</tr>
+
+<tr id='pt3.3' class='hiddenRow'>
+    <td class='text text-success'><div class='testcase'>test_204_点击积分商城给提示</div></td>
+    <td colspan='5' align='center'>pass</td>
+</tr>
+
+<tr id='pt3.4' class='hiddenRow'>
+    <td class='text text-success'><div class='testcase'>test_205_点击优惠券给提示</div></td>
+    <td colspan='5' align='center'>pass</td>
+</tr>
+
+<tr id='pt3.5' class='hiddenRow'>
+    <td class='text text-success'><div class='testcase'>test_206_我的12306跳转</div></td>
+    <td colspan='5' align='center'>pass</td>
+</tr>
+
+<tr id='pt3.6' class='hiddenRow'>
+    <td class='text text-success'><div class='testcase'>test_207_我的行程跳转</div></td>
+    <td colspan='5' align='center'>pass</td>
+</tr>
+
+<tr id='pt3.7' class='hiddenRow'>
+    <td class='text text-success'><div class='testcase'>test_208_意见反馈跳转</div></td>
+    <td colspan='5' align='center'>pass</td>
+</tr>
+
+<tr class='text text-success'>
+    <td>tc_35_意见反馈.tc_意见反馈</td>
+    <td>4</td>
+    <td>4</td>
+    <td>0</td>
+    <td>0</td>
+    <td><a class="btn btn-xs btn-primary"href="javascript:showClassDetail('c4',4)">Detail</a></td>
+</tr>
+
+<tr id='pt4.1' class='hiddenRow'>
+    <td class='text text-success'><div class='testcase'>test_202_详细描述和联系方式都为空给出提示</div></td>
+    <td colspan='5' align='center'>pass</td>
+</tr>
+
+<tr id='pt4.2' class='hiddenRow'>
+    <td class='text text-success'><div class='testcase'>test_203_仅详细描述为空给出提示</div></td>
+    <td colspan='5' align='center'>pass</td>
+</tr>
+
+<tr id='pt4.3' class='hiddenRow'>
+    <td class='text text-success'><div class='testcase'>test_204_联系方式都为空给出提示</div></td>
+    <td colspan='5' align='center'>pass</td>
+</tr>
+
+<tr id='pt4.4' class='hiddenRow'>
+    <td class='text text-success'><div class='testcase'>test_205_意见反馈主流程全部填写</div></td>
+    <td colspan='5' align='center'>pass</td>
+</tr>
+
+<tr class='text text-warning'>
+    <td>tc_40_我的资料.tc_我的资料</td>
+    <td>4</td>
+    <td>2</td>
+    <td>0</td>
+    <td>2</td>
+    <td><a class="btn btn-xs btn-primary"href="javascript:showClassDetail('c5',4)">Detail</a></td>
+</tr>
+
+<tr id='ft5.1' class='text text-success'>
+    <td class='text text-warning'><div class='testcase'>test_102_是否有城市选择控件弹出</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link btn btn-xs btn-default" onfocus='this.blur();' href="javascript:showTestDetail('div_ft5.1')" >
+        error</a>
+
+    <div id='div_ft5.1' class="popup_window">
+        <div style='text-align: right;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft5.1').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft5.1: Traceback (most recent call last):
+  File "D:\station_mapp\testCase\tc_40_我的资料.py", line 21, in test_102_是否有城市选择控件弹出
+    a=dr.jde_取消()
+  File "D:\station_mapp\common\common.py", line 68, in jde_取消
+    return self.judge_元素(3, self.btn_取消)
+TypeError: judge_元素() takes 2 positional arguments but 3 were given
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='ft5.2' class='text text-success'>
+    <td class='text text-warning'><div class='testcase'>test_103_是否有日期选择控件弹出</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link btn btn-xs btn-default" onfocus='this.blur();' href="javascript:showTestDetail('div_ft5.2')" >
+        error</a>
+
+    <div id='div_ft5.2' class="popup_window">
+        <div style='text-align: right;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft5.2').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft5.2: Traceback (most recent call last):
+  File "D:\station_mapp\testCase\tc_40_我的资料.py", line 29, in test_103_是否有日期选择控件弹出
+    a=dr.jde_取消()
+  File "D:\station_mapp\common\common.py", line 68, in jde_取消
+    return self.judge_元素(3, self.btn_取消)
+TypeError: judge_元素() takes 2 positional arguments but 3 were given
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt5.3' class='hiddenRow'>
+    <td class='text text-success'><div class='testcase'>test_104_确认修改出生日期</div></td>
+    <td colspan='5' align='center'>pass</td>
+</tr>
+
+<tr id='pt5.4' class='hiddenRow'>
+    <td class='text text-success'><div class='testcase'>test_105_取消修改出生日期</div></td>
+    <td colspan='5' align='center'>pass</td>
+</tr>
+
+<tr class='text text-success'>
+    <td>tc_45_车站大屏.tc_车站大屏详情</td>
+    <td>2</td>
+    <td>2</td>
+    <td>0</td>
+    <td>0</td>
+    <td><a class="btn btn-xs btn-primary"href="javascript:showClassDetail('c6',2)">Detail</a></td>
+</tr>
+
+<tr id='pt6.1' class='hiddenRow'>
+    <td class='text text-success'><div class='testcase'>test_001_车站大屏候车字段检查</div></td>
+    <td colspan='5' align='center'>pass</td>
+</tr>
+
+<tr id='pt6.2' class='hiddenRow'>
+    <td class='text text-success'><div class='testcase'>test_002_车站大屏到达字段检查</div></td>
+    <td colspan='5' align='center'>pass</td>
+</tr>
+
+<tr class='text text-success'>
+    <td>tc_5_站内商业.tc_站内商业</td>
+    <td>12</td>
+    <td>12</td>
+    <td>0</td>
+    <td>0</td>
+    <td><a class="btn btn-xs btn-primary"href="javascript:showClassDetail('c7',12)">Detail</a></td>
+</tr>
+
+<tr id='pt7.1' class='hiddenRow'>
+    <td class='text text-success'><div class='testcase'>test_301_所有楼层展开</div></td>
+    <td colspan='5' align='center'>pass</td>
+</tr>
+
+<tr id='pt7.2' class='hiddenRow'>
+    <td class='text text-success'><div class='testcase'>test_303_全部分类展开</div></td>
+    <td colspan='5' align='center'>pass</td>
+</tr>
+
+<tr id='pt7.3' class='hiddenRow'>
+    <td class='text text-success'><div class='testcase'>test_305_全部分类展开</div></td>
+    <td colspan='5' align='center'>pass</td>
+</tr>
+
+<tr id='pt7.4' class='hiddenRow'>
+    <td class='text text-success'><div class='testcase'>test_307_进站前后展开</div></td>
+    <td colspan='5' align='center'>pass</td>
+</tr>
+
+<tr id='pt7.5' class='hiddenRow'>
+    <td class='text text-success'><div class='testcase'>test_309_跳转店铺详情</div></td>
+    <td colspan='5' align='center'>pass</td>
+</tr>
+
+<tr id='pt7.6' class='hiddenRow'>
+    <td class='text text-success'><div class='testcase'>test_310_单条件筛选_所有楼层_一层</div></td>
+    <td colspan='5' align='center'>pass</td>
+</tr>
+
+<tr id='pt7.7' class='hiddenRow'>
+    <td class='text text-success'><div class='testcase'>test_311_单条件筛选_所有楼层_负一层_无结果</div></td>
+    <td colspan='5' align='center'>pass</td>
+</tr>
+
+<tr id='pt7.8' class='hiddenRow'>
+    <td class='text text-success'><div class='testcase'>test_312_单条件筛选_所有分类_美食_无结果</div></td>
+    <td colspan='5' align='center'>pass</td>
+</tr>
+
+<tr id='pt7.9' class='hiddenRow'>
+    <td class='text text-success'><div class='testcase'>test_313_单条件筛选_所有分类_超市</div></td>
+    <td colspan='5' align='center'>pass</td>
+</tr>
+
+<tr id='pt7.10' class='hiddenRow'>
+    <td class='text text-success'><div class='testcase'>test_314_单条件筛选_进站前后_进站前</div></td>
+    <td colspan='5' align='center'>pass</td>
+</tr>
+
+<tr id='pt7.11' class='hiddenRow'>
+    <td class='text text-success'><div class='testcase'>test_315_单条件筛选_进站前后_进站后</div></td>
+    <td colspan='5' align='center'>pass</td>
+</tr>
+
+<tr id='pt7.12' class='hiddenRow'>
+    <td class='text text-success'><div class='testcase'>test_399_标记归零</div></td>
+    <td colspan='5' align='center'>pass</td>
+</tr>
+
+<tr class='text text-danger'>
+    <td>tc_6_填写评论.tc_填写评论</td>
+    <td>8</td>
+    <td>4</td>
+    <td>4</td>
+    <td>0</td>
+    <td><a class="btn btn-xs btn-primary"href="javascript:showClassDetail('c8',8)">Detail</a></td>
+</tr>
+
+<tr id='pt8.1' class='hiddenRow'>
+    <td class='text text-success'><div class='testcase'>test_001_全部为空提示</div></td>
+    <td colspan='5' align='center'>pass</td>
+</tr>
+
+<tr id='pt8.2' class='hiddenRow'>
+    <td class='text text-success'><div class='testcase'>test_002_评分为空提示</div></td>
+    <td colspan='5' align='center'>pass</td>
+</tr>
+
+<tr id='pt8.3' class='hiddenRow'>
+    <td class='text text-success'><div class='testcase'>test_003_评论为空提示</div></td>
+    <td colspan='5' align='center'>pass</td>
+</tr>
+
+<tr id='ft8.4' class='text text-success'>
+    <td class='text text-danger'><div class='testcase'>test_004_主流程全部填写</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link btn btn-xs btn-default" onfocus='this.blur();' href="javascript:showTestDetail('div_ft8.4')" >
+        fail</a>
+
+    <div id='div_ft8.4' class="popup_window">
+        <div style='text-align: right;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft8.4').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft8.4: Traceback (most recent call last):
+  File "D:\station_mapp\testCase\tc_6_填写评论.py", line 58, in test_004_主流程全部填写
+    self.myEq("评论提交成功，审核通过后发布",a,"test_004_主流程全部填写")
+  File "D:\station_mapp\function\myassert.py", line 10, in myEq
+    return self.assertEqual(预期结果, 实际结果)
+AssertionError: '评论提交成功，审核通过后发布' != '提示评论失败，请重新发表您的评价'
+- 评论提交成功，审核通过后发布
++ 提示评论失败，请重新发表您的评价
+
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='ft8.5' class='text text-success'>
+    <td class='text text-danger'><div class='testcase'>test_005_主流程不上传图片</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link btn btn-xs btn-default" onfocus='this.blur();' href="javascript:showTestDetail('div_ft8.5')" >
+        fail</a>
+
+    <div id='div_ft8.5' class="popup_window">
+        <div style='text-align: right;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft8.5').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft8.5: Traceback (most recent call last):
+  File "D:\station_mapp\testCase\tc_6_填写评论.py", line 66, in test_005_主流程不上传图片
+    self.myEq("评论提交成功",a,"test_005_主流程不上传图片")
+  File "D:\station_mapp\function\myassert.py", line 10, in myEq
+    return self.assertEqual(预期结果, 实际结果)
+AssertionError: '评论提交成功' != '提示评论失败，请重新发表您的评价'
+- 评论提交成功
++ 提示评论失败，请重新发表您的评价
+
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='ft8.6' class='text text-success'>
+    <td class='text text-danger'><div class='testcase'>test_006_主流程不上传图片不匿名</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link btn btn-xs btn-default" onfocus='this.blur();' href="javascript:showTestDetail('div_ft8.6')" >
+        fail</a>
+
+    <div id='div_ft8.6' class="popup_window">
+        <div style='text-align: right;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft8.6').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft8.6: Traceback (most recent call last):
+  File "D:\station_mapp\testCase\tc_6_填写评论.py", line 74, in test_006_主流程不上传图片不匿名
+    self.myEq("评论提交成功",a,"test_006_主流程不上传图片不匿名")
+  File "D:\station_mapp\function\myassert.py", line 10, in myEq
+    return self.assertEqual(预期结果, 实际结果)
+AssertionError: '评论提交成功' != '提示评论失败，请重新发表您的评价'
+- 评论提交成功
++ 提示评论失败，请重新发表您的评价
+
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='ft8.7' class='text text-success'>
+    <td class='text text-danger'><div class='testcase'>test_007_主流程不匿名</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link btn btn-xs btn-default" onfocus='this.blur();' href="javascript:showTestDetail('div_ft8.7')" >
+        fail</a>
+
+    <div id='div_ft8.7' class="popup_window">
+        <div style='text-align: right;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft8.7').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft8.7: Traceback (most recent call last):
+  File "D:\station_mapp\testCase\tc_6_填写评论.py", line 82, in test_007_主流程不匿名
+    self.myEq("评论提交成功，审核通过后发布",a,"test_007_主流程不匿名")
+  File "D:\station_mapp\function\myassert.py", line 10, in myEq
+    return self.assertEqual(预期结果, 实际结果)
+AssertionError: '评论提交成功，审核通过后发布' != '提示评论失败，请重新发表您的评价'
+- 评论提交成功，审核通过后发布
++ 提示评论失败，请重新发表您的评价
+
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt8.8' class='hiddenRow'>
+    <td class='text text-success'><div class='testcase'>test_008_评论少于5个字</div></td>
+    <td colspan='5' align='center'>pass</td>
+</tr>
+
+    </tbody>
+    <tfoot>
+        <tr id='total_row'>
+            <td>Total</td>
+            <td>74</td>
+            <td class="text text-success">68</td>
+            <td class="text text-danger">4</td>
+            <td class="text text-warning">2</td>
+            <td>&nbsp;</td>
+        </tr>
+    </tfoot>
+</table>
+
+    <div id='ending'>&nbsp;</div>
+</div>
+
+</body>
+</html>
