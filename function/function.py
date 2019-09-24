@@ -63,12 +63,12 @@ def write_result_data(test_data_file_path,sheet_name,rows_number,status_actual=N
     newWb.save(path_项目路径()+test_data_file_path)
 
 def get_flag():
-    with open(path_项目路径()+report_allure"config\flag.text","report_allure") as f:
+    with open(path_项目路径()+"config\flag.text","report_allure") as f:
         data =f.read()
     return int(data)
 
 def update_flag(flag):
-    with open(path_项目路径()+report_allure"config\flag.text","w") as f:
+    with open(path_项目路径()+"config\flag.text","w") as f:
         f.write(str(flag))
 
 if __name__ == '__main__':

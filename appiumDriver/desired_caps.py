@@ -10,14 +10,14 @@ from selenium.webdriver.support.ui import WebDriverWait
 from function.function import path_项目路径
 
 "配置文件的路径"
-log_conf_file_path = path_项目路径() + report_allure'config\log.conf'
+log_conf_file_path = path_项目路径() + 'config\log.conf'
 logging.config.fileConfig(log_conf_file_path)
 logger = logging.getLogger()
 
 
 def appium_微信车站通():
     desired_caps = {}
-    with open(path_项目路径() + report_allure'config\czt_wx.yaml', 'report_allure', encoding='utf-8') as file:
+    with open(path_项目路径() + 'config\czt_wx.yaml',  encoding='utf-8') as file:
         data = yaml.load(file, Loader=yaml.FullLoader)
         desired_caps['platformName'] = data['platformName']
 
@@ -78,7 +78,7 @@ def appium_微信车站通():
 
 def appium_微信车站通_tmp():
     desired_caps = {}
-    with open(path_项目路径() + report_allure'config\czt_wx.yaml', 'report_allure', encoding='utf-8') as file:
+    with open(path_项目路径() + 'config\czt_wx.yaml',  encoding='utf-8') as file:
         data = yaml.load(file, Loader=yaml.FullLoader)
         desired_caps['platformName'] = data['platformName']
 
@@ -146,7 +146,7 @@ def appium_微信车站通_tmp():
 
 def appium_支付宝车站通():
     desired_caps = {}
-    with open(path_项目路径() + report_allure'config\czt_zfb.yaml', 'report_allure', encoding='utf-8') as file:
+    with open(path_项目路径() + 'config\czt_zfb.yaml', encoding='utf-8') as file:
         data = yaml.load(file, Loader=yaml.FullLoader)
         desired_caps['platformName'] = data['platformName']
 

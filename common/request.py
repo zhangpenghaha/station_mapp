@@ -9,12 +9,12 @@ import yaml
 'token: c9e2527e3962444698575a83a1a638e6'
 
 def get_host_cx9z():
-    with open(path_项目路径() + report_allure"config\api_conf.yaml", "report_allure", encoding="utf-8") as file:
+    with open(path_项目路径() + "config\api_conf.yaml", "report_allure", encoding="utf-8") as file:
         yamldata = yaml.load(file, Loader=yaml.FullLoader)
         return [yamldata["host1"], yamldata["token"]]
 
 def get_host_wtkj():
-    with open(path_项目路径() + report_allure"config\api_conf.yaml", "report_allure", encoding="utf-8") as file:
+    with open(path_项目路径() + "config\api_conf.yaml", "report_allure", encoding="utf-8") as file:
         yamldata = yaml.load(file, Loader=yaml.FullLoader)
         return [yamldata["host3"], yamldata["token"]]
 
@@ -50,8 +50,8 @@ def post_requests(path,form_datas=None):
 def delete_所有绑定行程(token, ):
     # e88dab00c8c24e89865c6abf9cc0f9de(测试环境)
     # "bdadc81b4ebb40af8c4af9e35a6552fd"(线上)
-    host = get_host()
-    base_url = host + report_allure"galaxy/schedule/queryScheduleListWithXiaochang"
+    host = get_host_wtkj()
+    base_url = host + "galaxy/schedule/queryScheduleListWithXiaochang"
     header = {"content-type": "application/x-www-form-urlencoded", "token": token}
     r = requests.post(base_url, headers=header)
     route_data = r.json()["data"]["data"]
@@ -73,7 +73,7 @@ def delete_所有绑定行程(token, ):
             timeStamp = int(times) / 1000
             timeArray = time.localtime(timeStamp)
             formatTime = time.strftime("%Y-%m-%d %H:%M", timeArray)
-            base_url2 = host + report_allure"galaxy/schedule/deleteRefundScheduleV2"
+            base_url2 = host + "galaxy/schedule/deleteRefundScheduleV2"
             fdata = {"trainNo": trainNo, "startStation": startStation, "startTime": formatTime,
                      "scheduleType": scheduleType}
             r = requests.post(base_url2, headers=header, data=fdata)

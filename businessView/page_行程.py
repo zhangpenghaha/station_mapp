@@ -65,7 +65,7 @@ class page_行程(common):
         :param userID: 配置文件获取
         :return: 当前用户绑定的行程列表  按时间排序的车次  列表
         """
-        with open(path_项目路径() + report_allure"config\api_conf.yaml", "report_allure", encoding="utf-8") as file:
+        with open(path_项目路径() + "config\api_conf.yaml", "report_allure", encoding="utf-8") as file:
             yamldata = yaml.load(file, Loader=yaml.FullLoader)
         我的行程 = {}
         行程=[]
@@ -107,7 +107,7 @@ class page_行程(common):
 
 
 if __name__ == '__main__':
-    with open(path_项目路径() + report_allure"config\api_conf.yaml", "report_allure", encoding="utf-8") as file:
+    with open(path_项目路径() + "config\api_conf.yaml", "report_allure", encoding="utf-8") as file:
         yamldata = yaml.load(file, Loader=yaml.FullLoader)
     我的行程 = {}
     行程 = []
