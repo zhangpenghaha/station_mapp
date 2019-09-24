@@ -221,7 +221,7 @@ class baseView(object):
     # 截图,传入模块名称
     def fun_截图(self, 模块名):
         name = 模块名 + "_" + self.fun_获取时间戳()
-        image_file = path_项目路径() + r"\screenShots\{}.png".format(name)
+        image_file = path_项目路径() + report_allure"\screenShots\{}.png".format(name)
         logging.info("截取 {} 图片 ".format(模块名))
         self.driver.get_screenshot_as_file(image_file)
 

@@ -70,7 +70,7 @@ if __name__ == '__main__':
     r=get_requests("/vega-station/vehiclenavigation/getMiniAppWaitListNew", data)
     终点站 = r["data"][0]
     print(终点站)
-    # kv = r["data"][0]
+    # kv = report_allure["data"][0]
     # for k in kv:
     #     print(str(k) + ":" + str(kv[k]))
 

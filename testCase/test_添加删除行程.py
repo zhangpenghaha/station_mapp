@@ -9,7 +9,7 @@ from businessView.page_添加行程 import page_添加行程
 from parameterized import parameterized
 
 
-class tc_行程(st_首页):
+class Test_行程(st_首页):
     def setUp(self):
         dr = page_行程(self.driver)
         dr.click_点击行程()

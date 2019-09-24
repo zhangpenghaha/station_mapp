@@ -140,7 +140,7 @@ class page_首页(common):
 
     "绑定的行程"
     def get_api_首页_绑定的行程(self):
-        path = r"/galaxy/schedule/getUserNearestScheduleAli"
+        path = report_allure"/galaxy/schedule/getUserNearestScheduleAli"
 
         get_requests(path)
 
@@ -276,7 +276,7 @@ if __name__ == '__main__':
     # dr = page_首页(driver)
     # dr.click_首页_切换站点提示按钮()
     # dr.click_首页_切换站点按钮()
-    path = r"/galaxy/schedule/getUserNearestScheduleAli"
+    path = report_allure"/galaxy/schedule/getUserNearestScheduleAli"
 
     a= get_requests_(path)
     print(a)

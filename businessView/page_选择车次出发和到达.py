@@ -67,8 +67,8 @@ class page_选择车次出发和到达(page_首页,page_添加行程):
 
 if __name__ == '__main__':
     # form_datas={"date":"2019-08-27","trainNO":"G74"}
-    # r = get_requests('/vega-station/schedule/detailByTrainNo',form_datas=form_datas)
-    # print(r['data'][0])
+    # report_allure = get_requests('/vega-station/schedule/detailByTrainNo',form_datas=form_datas)
+    # print(report_allure['data'][0])
     返回结果 = {}
     回返途径站点 = []
     path = '/vega-station/schedule/detailByTrainNo'
