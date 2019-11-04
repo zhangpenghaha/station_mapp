@@ -8,22 +8,24 @@ class page_行程(common):
     "定位器!!!!!!!!!!!!!!!!!!!!!!!"
     btn_行程 = loc_text("行程")
     btn_行程_添加行程1 = loc_text("+添加行程")
-    btn_行程_添加行程2 = loc_child_TtoC_Number("wx8d75e764f0c4bf1c:pages/tabBar/trainState/index.html:VISIBLE",
-                                         "android.widget.Button", 1)
-
+    btn_行程_添加行程2 = loc_id("ATtrain2")
+    btn_分享 = loc_id("ATtrain1_0")
     btn_行程_手动添加 = loc_text("手动添加")
     btn_行程_取消 = loc_text("取消")
     btn_行程_删除 = loc_id_instance("detele", 0)
+    btn_关闭分享 = loc_id("ATtrain3")
 
     "操作层"
     def click_点击行程(self):
         return self.click_点击(self.btn_行程, "btn_点击行程")
 
+    def click_点击分享(self):
+        return self.click_点击(self.btn_分享, "btn_分享")
+    def click_关闭分享行程(self):
+        return self.click_点击(self.btn_关闭分享, "关闭分享行程")
+
     def click_添加行程2(self):
-        a = self.get_screenSize()
-        x = a[0] * 0.92
-        y = a[1] * 0.77
-        return TouchAction(self.driver).tap(x=x, y=y).perform()
+        return self.click_点击(self.btn_行程_添加行程2, "添加行程")
 
     def click_行程_添加行程(self):
         if self.click_点击(self.btn_行程_添加行程1, "btn_行程_添加行程"):
@@ -47,7 +49,7 @@ class page_行程(common):
     def bus_行程_删除首个行程(self):
         a = self.click_行程_删除()
         b = self.click_确定()
-        return a + b
+        # return a + b
 
     def bus_行程_删除全部(self, num_删除个数=20):
         num = 0
@@ -59,13 +61,16 @@ class page_行程(common):
             if num_删除个数 == num :
                 break
 
+    def scoll_滑动找车次信息(self, text):
+        return self.find_text_with_scroll(text)
+
     def get_api_行程_车次(self):
         """
 
         :param userID: 配置文件获取
         :return: 当前用户绑定的行程列表  按时间排序的车次  列表
         """
-        with open(path_项目路径() + "config\api_conf.yaml", "report_allure", encoding="utf-8") as file:
+        with open(path_项目路径() + r"config\api_conf.yaml", "r", encoding="utf-8") as file:
             yamldata = yaml.load(file, Loader=yaml.FullLoader)
         我的行程 = {}
         行程=[]
@@ -104,10 +109,15 @@ class page_行程(common):
         # get_requests()
         # for i in 车次号:
         #     self.
+    def click_行程页_关闭分享(self):
+        return self.click_点击(self.btn_关闭分享, "关闭分享")
+
+
+
 
 
 if __name__ == '__main__':
-    with open(path_项目路径() + "config\api_conf.yaml", "report_allure", encoding="utf-8") as file:
+    with open(path_项目路径() + r"config\api_conf.yaml", "r", encoding="utf-8") as file:
         yamldata = yaml.load(file, Loader=yaml.FullLoader)
     我的行程 = {}
     行程 = []

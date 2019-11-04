@@ -9,7 +9,8 @@ class page_切换站点(page_首页):
 
     "搜索框"
     btn_切换站点焦点=loc_id("com.tencent.mm:id/uv")
-    ipb_切换站点_输入框=loc_child_IDtoC_Number("com.tencent.mm:id/y","android.widget.EditText",0)
+    # ipb_切换站点_输入框=loc_child_IDtoC_Number("com.tencent.mm:id/y","android.widget.EditText",0)
+    ipb_切换站点_输入框 = loc_text("中文 / 英文 / 首字母")
 
     "搜索结果"
     btn_切换站点_第一个结果=loc_child_TtoCT_Number("wx8d75e764f0c4bf1c:pages/station/pages/switchStation/switchStation.html:VISIBLE","站",0)
@@ -73,11 +74,12 @@ class page_切换站点(page_首页):
 
     "==================================业务层===================================="
     def bus_切换站点_切换到指定站点(self,cityStation):
-        self.wait_显式等待(20,self.btn_切换站点焦点)
-        self.click_切换站点焦点()
+        # self.wait_显式等待(20,self.btn_切换站点焦点)
+        # self.click_切换站点焦点()
+        sleep(5)
         self.send_站点城市(cityStation)
         sleep(2)
-        self.click_点击(loc_contains_text_instance(cityStation,0),"点击获取搜索结果")
+        self.click_点击(loc_text(cityStation+"站"),"点击获取搜索结果")
 
 
 

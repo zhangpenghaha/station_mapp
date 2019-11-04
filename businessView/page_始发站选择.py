@@ -61,14 +61,14 @@ class page_选择车次出发和到达(page_首页,page_添加行程):
         return self.click_点击(btn_起始站, "点击起始站")
 
     def btn_选择终点站(self, text):
-        btn_终点站 = self.find_element_with_scroll(text)
+        btn_终点站 = self.find_text_with_scroll(text)
         return self.click_点击(btn_终点站, "点击终点站")
 
 
 if __name__ == '__main__':
     # form_datas={"date":"2019-08-27","trainNO":"G74"}
-    # report_allure = get_requests('/vega-station/schedule/detailByTrainNo',form_datas=form_datas)
-    # print(report_allure['data'][0])
+    # r = get_requests('/vega-station/schedule/detailByTrainNo',form_datas=form_datas)
+    # print(r['data'][0])
     返回结果 = {}
     回返途径站点 = []
     path = '/vega-station/schedule/detailByTrainNo'

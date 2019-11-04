@@ -15,11 +15,11 @@ class tc_站内商业(st_首页):
         flag = get_flag()
         if flag == 0:
             dr.click_首页()
-            a = dr.get_首页顶部_当前站点()
+            a = dr.get_toast("浠水站")
             if a != "浠水站":
                 dr.click_首页_切换站点按钮()
                 dr = page_切换站点(self.driver)
-                dr.bus_切换站点_切换到指定站点("浠水站")
+                dr.bus_切换站点_切换到指定站点("浠水")
                 dr.act_上滑(3)
                 dr.click_首页_车站商业查看全部()
                 update_flag(1)
@@ -36,7 +36,7 @@ class tc_站内商业(st_首页):
         a1 = dr.click_站内商业_所有楼层()
         a2 = dr.get_站内商业_筛选展开2()
         a3 = dr.get_站内商业_筛选展开3()
-        self.myEq(str(a1) + a2 + a3, "1F1B1", "test_301_所有楼层展开")
+        self.myEq(str(a1) + a2 + a3, "TrueF1B1", "test_301_所有楼层展开")
 
     def test_303_全部分类展开(self):
         logging.info("=====test_303_全部分类展开=====")
@@ -44,7 +44,7 @@ class tc_站内商业(st_首页):
         a1 = dr.click_站内商业_全部分类()
         a2 = dr.get_站内商业_筛选展开4()
         a3 = dr.get_站内商业_筛选展开5()
-        self.myEq(str(a1) + a2 + a3, "1美食娱乐休闲", "test_303_全部分类展开")
+        self.myEq(str(a1) + a2 + a3, "True美食娱乐休闲", "test_303_全部分类展开")
 
     def test_305_全部分类展开(self):
         logging.info("=====test_305_全部分类展开=====")
@@ -52,7 +52,7 @@ class tc_站内商业(st_首页):
         a1 = dr.click_站内商业_智能排序()
         a2 = dr.get_站内商业_筛选展开2()
         a3 = dr.get_站内商业_筛选展开3()
-        self.myEq(str(a1) + a2 + a3, "1人均最低评分最高", "test_305_全部分类展开")
+        self.myEq(str(a1) + a2 + a3, "True人均最低评分最高", "test_305_全部分类展开")
 
     def test_307_进站前后展开(self):
         logging.info("=====test_307_进站前后展开=====")
@@ -60,7 +60,7 @@ class tc_站内商业(st_首页):
         a1 = dr.click_站内商业_进站前后()
         a2 = dr.get_站内商业_筛选展开2()
         a3 = dr.get_站内商业_筛选展开3()
-        self.myEq(str(a1) + a2 + a3, "1进站前进站后", "test_307_进站前后展开")
+        self.myEq(str(a1) + a2 + a3, "True进站前进站后", "test_307_进站前后展开")
 
     def test_309_跳转店铺详情(self):
         logging.info("=====test_309_跳转店铺详情=====")
@@ -68,7 +68,7 @@ class tc_站内商业(st_首页):
         a1 = dr.click_站内商业_店铺列表_便民超市()
         dr = page_店铺详情(self.driver)
         a2 = dr.get_店铺详情_评论此商家()
-        self.myEq(str(a1) + a2, "1评论此商家", "test_309_跳转店铺详情")
+        self.myEq(str(a1) + str(a2), "True评论此商家", "test_309_跳转店铺详情")
 
     def test_310_单条件筛选_所有楼层_一层(self):
         logging.info("=====test_310_单条件筛选_所有楼层_F1=====")
@@ -109,7 +109,7 @@ class tc_站内商业(st_首页):
         logging.info("=====test_314_单条件筛选_进站前后_进站前=====")
         dr = page_站内商业(self.driver)
         dr.click_站内商业_进站前后()
-        dr.click_站内商业_筛选展开2()
+        dr.click_站内商业_进站前()
         sleep(2)
         a1 = dr.get_站内商业_店铺列表_便民超市()
         a2 = dr.get_站内商业_店铺列表_平价自选商店()
@@ -119,11 +119,11 @@ class tc_站内商业(st_首页):
         logging.info("=====test_315_单条件筛选_进站前后_进站后=====")
         dr = page_站内商业(self.driver)
         dr.click_站内商业_进站前后()
-        dr.click_站内商业_筛选展开3()
+        dr.click_站内商业_进站后()
         sleep(3)
         a2 = dr.get_站内商业_店铺列表_平价自选商店()
         a1 = dr.get_站内商业_店铺列表_便民超市()
-        self.myEq(str(a1) + str(a2), "0平价自选商店", "test_315_单条件筛选_进站前后_进站后")
+        self.myEq(str(a1) + str(a2), "便民超市平价自选商店", "test_315_单条件筛选_进站前后_进站后")
 
     def test_399_标记归零(self):
         update_flag(0)

@@ -63,17 +63,17 @@ def write_result_data(test_data_file_path,sheet_name,rows_number,status_actual=N
     newWb.save(path_项目路径()+test_data_file_path)
 
 def get_flag():
-    with open(path_项目路径()+"config\flag.text","report_allure") as f:
+    with open(path_项目路径()+r"config\flag.text","r") as f:
         data =f.read()
     return int(data)
 
 def update_flag(flag):
-    with open(path_项目路径()+"config\flag.text","w") as f:
+    with open(path_项目路径()+r"config\flag.text","w") as f:
         f.write(str(flag))
 
 if __name__ == '__main__':
     a=path_项目路径()
-    # a=excel_read(report_allure'testData\密码为空测试数据.xls',report_allure"手机号密码测试数据")
+    # a=excel_read(r'testData\密码为空测试数据.xls',r"手机号密码测试数据")
     update_flag(1)
     b=get_flag()
     print(b)

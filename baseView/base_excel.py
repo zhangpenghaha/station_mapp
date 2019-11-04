@@ -4,7 +4,7 @@ import os
 
 def read_excel(file_name,sheet_num):
     data_list = []
-    book = xlrd.open_workbook(".%sdata%s%s" % (os.sep, os.sep, file_name))
+    book = xlrd.open_workbook("..%sdata%s%s" % (os.sep, os.sep, file_name))
     sheet1 = book.sheet_by_name(sheet_num)
     # 获取行数
     rows = sheet1.nrows

@@ -25,8 +25,11 @@ class page_我的资料(page_个人中心):
     btn_我的资料_您的手机号 = loc_text("您的手机号")
     btn_我的资料_所在城市 = loc_text("所在城市")
     btn_我的资料_出生日期 = loc_text("出生日期")
+    btn_首页 = loc_text("首页")
 
     "操作层"
+    def click_点击首页(self):
+        self.click_点击(self.btn_首页, "点击首页")
 
     def get_text_您的手机号(self):
         return self.get_元素文本(self.btn_我的资料_您的手机号, "btn_您的手机号")
@@ -83,7 +86,7 @@ class page_我的资料(page_个人中心):
     def bus_修改日期(self, 确定or取消):
         logging.info("=====开始修改出生日期业务====")
         tmpA = self.get_出生日期()
-        logging.info("选择前的出生年月日为:" + tmpA)
+        logging.info("选择前的出生年月日为:" + str(tmpA))
         self.click_出生日期()
         year = self.swipe_年向上()
         logging.info("选择的出生年为:" + str(year))
@@ -94,16 +97,16 @@ class page_我的资料(page_个人中心):
         day = self.swipe_日向上()
         logging.info("选择的出生日为:" + str(day))
         tmpC = year + "-" + month + "-" + day
-        logging.info("选择后的出生年月日为:" + tmpC)
+        logging.info("选择后的出生年月日为:" + str(tmpC))
         if 确定or取消 == "确定":
             self.click_确定()
             tmpB = self.get_出生日期()
-            logging.info("修改后的出生年月日为:" + tmpB)
+            logging.info("修改后的出生年月日为:" + str(tmpB))
             return judgement(tmpB, tmpC)
         elif 确定or取消 == "取消":
             self.click_取消()
             tmpD = self.get_出生日期()
-            logging.info("取消修改后的出生年月日为:" + tmpD)
+            logging.info("取消修改后的出生年月日为:" + str(tmpD))
             return judgement(tmpA, tmpD)
         else:
             logging.error("参数输入错误!!!")

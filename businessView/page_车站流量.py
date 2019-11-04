@@ -36,7 +36,8 @@ class page_车站流量(page_首页):
         return self.click_点击(self.btn_车站流量_查看全部车次,"btn_车站流量_查看全部车次")
 
     def click_车站流量_时刻查询(self):
-        return self.click_点击(self.btn_车站流量_时刻查询,"btn_车站流量_时刻查询")
+        btn_车站流量_时刻查询 = self.find_element_with_scroll("时刻查询")
+        return self.click_点击(btn_车站流量_时刻查询,"btn_车站流量_时刻查询")
     def click_车站流量_行李托运(self):
         return self.click_点击(self.btn_车站流量_行李托运,"btn_车站流量_行李托运")
     def click_车站流量_车站地图(self):

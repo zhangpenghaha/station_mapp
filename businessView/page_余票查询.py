@@ -2,40 +2,50 @@ from selenium.webdriver.common.by import By
 from businessView.page_首页 import page_首页
 import logging
 
+from common.loc import *
+
+
 class page_余票查询(page_首页):
     "!!!!!!!!!!!!!!!!!!!定位器!!!!!!!!!!!!!!!!!!!!!!!"
 
     "!!!!按钮定位器!!!!"
-    btn_查询 = (By.XPATH, '//*[@text="查询"]')
+    # btn_查询 = (By.XPATH, '//*[@text="查询"]')
+    #
+    # btn_出发地 = (By.XPATH, '//*[@text="出发地"]')
+    # # btn_出发地列表 = (By.XPATH, '//*[@bounds="[138,432][276,525]"]')
+    #
+    # btn_目的地 = (By.XPATH, '//*[@text="目的地"]')
+    #
+    # btn_切换地点 = (By.XPATH, '//*[@bounds="[480,373][597,490]"]')
+    btn_出发地 = loc_text("出发地")
 
-    btn_出发地列表 = (By.XPATH, '//*[@text="出发地"]')
-    # btn_出发地列表 = (By.XPATH, '//*[@bounds="[138,432][276,525]"]')
+    btn_目的地 = loc_text("目的地")
 
-    btn_目的地列表 = (By.XPATH, '//*[@text="目的地"]')
-
-    btn_切换地点 = (By.XPATH, '//*[@bounds="[480,373][597,490]"]')
-
-
+    btn_查询 = loc_text("查询")
     "!!!!文本定位器!!!!"
 
-    text_今天 = (By.XPATH, '//*[@text="今天"]')
+    # text_今天 = (By.XPATH, '//*[@text="今天"]')
 
-
-
-
-
+    btn_选择日期 = loc_text("出发日期")
 
     "!!!!操作层!!!!"
     def click_出发地(self):
         logging.info("点击出发地,进入出发地搜索列表!")
-        self.find_元素(*self.btn_出发地列表).click()
-        logging.info("进入出发地搜索列表!")
+        self.click_点击(self.btn_出发地, "点击出发地")
+        # logging.info("进入出发地搜索列表!")
 
+    def click_目的地(self):
+        logging.info("点击目的地,进入目的地搜索列表!")
+        self.click_点击(self.btn_目的地, "点击目的地")
+        # logging.info("进入出发地搜索列表!")
 
+    def click_余票查询_查询(self):
+        logging.info("点击_余票查询_查询")
+        self.click_点击(self.btn_查询, "点击余票查询")
 
-
-
-
+    def click_点击出发日期(self):
+        logging.info("点击_余票查询_出发日期")
+        self.click_点击(self.btn_选择日期, "点击日期")
 
     "!!!!!!!!校验层!!!!!!!"
     def check_余票查询页面跳转(self):

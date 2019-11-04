@@ -1,0 +1,53 @@
+<ns0:test-suite xmlns:ns0="urn:model.allure.qatools.yandex.ru" start="1569462871423" stop="1569462871423">
+  <description>This is the tests collection phase. Failures are modules that failed to collect.</description>
+  <name>test_collection_phase</name>
+  <title>Collection phase</title>
+  <labels/>
+  <test-cases>
+    <test-case start="1569462871423" status="broken" stop="1569462871423">
+      <name>test</name>
+      <failure>
+        <message>failed</message>
+        <stack-trace>ImportError while importing test module 'C:\Users\Administrator\Desktop\station_mapp\testCase\test.py'.
+Hint: make sure your test modules/packages have valid Python names.
+Traceback:
+testCase\test.py:1: in &lt;module&gt;
+    from common.desired_caps import appium_desired
+E   ModuleNotFoundError: No module named 'common.desired_caps'</stack-trace>
+      </failure>
+      <attachments/>
+      <labels/>
+      <steps/>
+    </test-case>
+    <test-case start="1569462871423" status="broken" stop="1569462871423">
+      <name>test_1_首页</name>
+      <failure>
+        <message>failed</message>
+        <stack-trace>testCase\test_1_首页.py:1: in &lt;module&gt;
+    from myUnit.st_首页 import st_首页
+myUnit\st_首页.py:12: in &lt;module&gt;
+    class st_首页(myassert):
+myUnit\st_首页.py:13: in st_首页
+    driver = appium_微信车站通()
+appiumDriver\desired_caps.py:52: in appium_微信车站通
+    driver.find_element_by_android_uiautomator('new UiSelector().text("发现")').click()
+f:\python_1\lib\site-packages\appium\webdriver\webdriver.py:366: in find_element_by_android_uiautomator
+    return self.find_element(by=MobileBy.ANDROID_UIAUTOMATOR, value=uia_string)
+f:\python_1\lib\site-packages\appium\webdriver\webdriver.py:258: in find_element
+    'value': value})['value']
+f:\python_1\lib\site-packages\selenium\webdriver\remote\webdriver.py:321: in execute
+    self.error_handler.check_response(response)
+f:\python_1\lib\site-packages\appium\webdriver\errorhandler.py:29: in check_response
+    raise wde
+f:\python_1\lib\site-packages\appium\webdriver\errorhandler.py:24: in check_response
+    super(MobileErrorHandler, self).check_response(response)
+f:\python_1\lib\site-packages\selenium\webdriver\remote\errorhandler.py:242: in check_response
+    raise exception_class(message, screen, stacktrace)
+E   selenium.common.exceptions.WebDriverException: Message: An unknown server-side error occurred while processing the command. Original error: Could not proxy command to remote server. Original error: Error: socket hang up</stack-trace>
+      </failure>
+      <attachments/>
+      <labels/>
+      <steps/>
+    </test-case>
+  </test-cases>
+</ns0:test-suite>

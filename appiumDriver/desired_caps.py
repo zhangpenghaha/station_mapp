@@ -10,14 +10,14 @@ from selenium.webdriver.support.ui import WebDriverWait
 from function.function import path_项目路径
 
 "配置文件的路径"
-log_conf_file_path = path_项目路径() + 'config\log.conf'
+log_conf_file_path = path_项目路径() + r'config\log.conf'
 logging.config.fileConfig(log_conf_file_path)
 logger = logging.getLogger()
 
 
 def appium_微信车站通():
     desired_caps = {}
-    with open(path_项目路径() + 'config\czt_wx.yaml',  encoding='utf-8') as file:
+    with open(path_项目路径() + r'config\czt_wx.yaml', 'r', encoding='utf-8') as file:
         data = yaml.load(file, Loader=yaml.FullLoader)
         desired_caps['platformName'] = data['platformName']
 
@@ -78,7 +78,7 @@ def appium_微信车站通():
 
 def appium_微信车站通_tmp():
     desired_caps = {}
-    with open(path_项目路径() + 'config\czt_wx.yaml',  encoding='utf-8') as file:
+    with open(path_项目路径() + r'config\czt_wx.yaml', 'r', encoding='utf-8') as file:
         data = yaml.load(file, Loader=yaml.FullLoader)
         desired_caps['platformName'] = data['platformName']
 
@@ -146,7 +146,7 @@ def appium_微信车站通_tmp():
 
 def appium_支付宝车站通():
     desired_caps = {}
-    with open(path_项目路径() + 'config\czt_zfb.yaml', encoding='utf-8') as file:
+    with open(path_项目路径() + r'config\czt_zfb.yaml', 'r', encoding='utf-8') as file:
         data = yaml.load(file, Loader=yaml.FullLoader)
         desired_caps['platformName'] = data['platformName']
 
@@ -155,7 +155,7 @@ def appium_支付宝车站通():
         desired_caps['udid'] = data['udid']
 
         desired_caps['noReset'] = data['noReset']
-        desired_caps['fullReset'] = data['fullReset']
+        # desired_caps['fullReset'] = data['fullReset']
 
         desired_caps['unicodeKeyboard'] = data['unicodeKeyboard']
         desired_caps['resetKeyboard'] = data['resetKeyboard']
@@ -165,7 +165,7 @@ def appium_支付宝车站通():
 
         desired_caps['automationName'] = data['automationName']
 
-        desired_caps['chromeOptions'] = data['chromeOptions']
+        # desired_caps['chromeOptions'] = data['chromeOptions']
         logging.info('======启动支付宝======')
 
         driver = webdriver.Remote('http://' + str(data['ip']) + ':' + str(data['port']) + '/wd/hub', desired_caps)

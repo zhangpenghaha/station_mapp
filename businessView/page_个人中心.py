@@ -5,7 +5,7 @@ from common.common import common
 class page_个人中心(common):
     "定位器"
 
-    btn_个人中心_我的资料 = loc_start_text("会员号：")
+    btn_个人中心_我的资料 = loc_start_text("张鹏")
 
     btn_个人中心_任务中心 = loc_text("任务中心")
     btn_个人中心_优惠价 = loc_text("优惠券")

@@ -3,13 +3,11 @@ from common.loc import *
 from time import sleep
 
 class page_填写评论(page_店铺详情):
-    ipb_填写评论_商家评论 = loc_child_IDtoC_Number("com.tencent.mm:id/y", "android.widget.EditText", 0)
-    btn_填写评论_星级 = loc_child_TtoC_Number("wx8d75e764f0c4bf1c:pages/playStation/pages/write/write.html:VISIBLE",
-                                        "android.widget.Image", 3)
-    btn_填写评论_提交评价 = loc_child_TtoT("wx8d75e764f0c4bf1c:pages/playStation/pages/write/write.html:VISIBLE", "提交评价 ")
-    btn_填写评论_添加图片 = loc_child_TtoT("wx8d75e764f0c4bf1c:pages/playStation/pages/write/write.html:VISIBLE", "添加图片")
-    btn_填写评论_勾选匿名 = loc_child_TtoC_Number("wx8d75e764f0c4bf1c:pages/playStation/pages/write/write.html:VISIBLE",
-                                          "android.widget.Image", 7)
+    ipb_填写评论_商家评论 = loc_id("ATwrite2")
+    btn_填写评论_星级 = loc_id("ATwrite1")
+    btn_填写评论_提交评价 = loc_text("提交评价 ")
+    btn_填写评论_添加图片 = loc_text("添加图片")
+    btn_填写评论_勾选匿名 = loc_id("ATwrite3")
 
     "提示定位"
 

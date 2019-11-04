@@ -16,14 +16,16 @@ logging.config.fileConfig(CON_LOG)
 logging = logging.getLogger()
 
 test_dir = '../testCase'
-report_dir = '../reports'
-
+# report_dir = '../reports'
+report_dir = r"C:\Users\Administrator\.jenkins\workspace\station_map\reports"
 discover1 = unittest.defaultTestLoader.discover(test_dir, pattern='test_*.py')
 
 now = time.strftime('%Y-%m-%d %H_%M_%S')
-report_name = report_dir+'/'+now+'test_report.html'
+report_name = report_dir+'/'+'report.html'
 
 with open(report_name,'wb') as f:
     runner = BSTestRunner(stream=f, title="微信车站通测试报告!", description="测试个人中心模块!")
     logging.info("=====开始车站通微信小程序测试=====")
     runner.run(discover1)
+
+

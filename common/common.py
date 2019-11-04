@@ -1,4 +1,5 @@
 # coding:utf8
+import time
 
 from common.loc import *
 
@@ -18,6 +19,8 @@ class common(baseView):
     btn_确认 = loc_text("确认")
     btn_取消 = loc_text("取消")
     toast_单个按钮弹出提示 = loc_id("com.tencent.mm:id/dcf")
+    btn_微信返回 = loc_desc("返回")
+    btn_后一天 = loc_text("后一天")
 
     "退出键盘"
     btn_退出小键盘 = loc_class("android.widget.Image")
@@ -26,13 +29,14 @@ class common(baseView):
     txt_title = loc_id("com.tencent.mm:id/ph")
 
     "系统摄像头-text:我的二维码"
-    text_二维码提示 = loc_id("com.tencent.mm:id/eb7")
-
+    # text_二维码提示 = loc_id("com.tencent.mm:id/eb7")   #com.tencent.mm:id/ejr
+    text_二维码提示 = loc_text("我的二维码")
     "图片选择"
     btn_图片选择返回 = loc_id("com.tencent.mm:id/la")
     btn_完成 = loc_class_instance("android.widget.Button",0)
-
+    btn_意见个人中心 = loc_id("com.tencent.mm:id/p9")
     btn_返回 = loc_id("com.tencent.mm:id/p8")
+    # btn_返回 = "com.tencent.mm: id / py"
     btn_首页 = loc_text("首页")
     btn_行程 = loc_text("行程")
     btn_玩转车站 = loc_text("玩转车站")
@@ -41,8 +45,13 @@ class common(baseView):
     def get_二维码提示(self):
         return self.get_元素文本(self.text_二维码提示, "text_二维码提示")
 
+    def click_后一天(self):
+        return self.click_点击(self.btn_后一天, "btn_后一天")
+
+    def get_text(self, toast_tip):
+        return self.get_元素文本(loc_text(toast_tip), "获取" + toast_tip + "文本")
     def get_toast(self,toast_tip):
-        return self.get_元素文本(loc_text(toast_tip), "toast_提示")
+        return self.get_元素文本(loc_text(toast_tip), "toast_提示:" + toast_tip)
     def get_toast_byid(self):
         return self.get_元素文本(loc_id_instance("com.tencent.mm:id/d0",0), "toast_提示")
     def get_toast_byclass(self):
@@ -59,6 +68,12 @@ class common(baseView):
 
     def get_title(self):
         return self.get_元素文本(self.txt_title, "txt_title")
+
+    def click_点击文本(self, text):
+        return self.click_点击(loc_text(text), text)
+
+    def click_微信返回(self):
+        return self.click_点击(self.btn_微信返回, "微信返回")
 
     def click_确定添加(self):
         return self.click_点击(self.btn_确定添加, "点击确定按钮!")
@@ -112,22 +127,73 @@ class common(baseView):
         return TouchAction(self.driver).tap(x=x, y=y).perform()
 
     def tc_后置回首页(self):
-        for i in range(10):
-            j = self.jde_返回按钮()
-            if j == 1:
-                self.click_返回按钮("后置返回")
-            elif j == 0:
-                self.click_首页()
-                break
+        time.sleep(10)
+        # for i in range(10):
+        #     j = self.jde_返回按钮()
+        #     if j == 1:
+        #         self.click_返回按钮("后置返回")
+        #     elif j == 0:
+        #         self.click_首页()
+        #         break
+        for i in range(4):
+            a = self.get_screenSize()
+            x = a[0] * 0.0333
+            y = a[1] * 0.1
+            TouchAction(self.driver).tap(x=x, y=y).perform()
+            time.sleep(2)
+        self.click_首页()
 
     def tc_后置回我的(self):
-        for i in range(10):
-            j = self.jde_返回按钮()
-            if j == 1:
-                self.click_返回按钮("后置返回")
-            elif j == 0:
-                self.click_我的按钮()
-                break
+        # for i in range(10):
+        #     j = self.jde_返回按钮()
+        #     if j == 1:
+        #         self.click_返回按钮("后置返回")
+        #     elif j == 0:
+        #         self.click_我的按钮()
+        #         break
+        time.sleep(10)
+        for i in range(4):
+            a = self.get_screenSize()
+            x = a[0] * 0.0333
+            y = a[1] * 0.1
+            TouchAction(self.driver).tap(x=x, y=y).perform()
+            time.sleep(1)
+        self.click_我的按钮()
+
+    def tc_后置回个人中心(self):
+        # for i in range(10):
+        #     j = self.jde_返回按钮()
+        #     if j == 1:
+        #         self.click_返回按钮("后置返回")
+        #     elif j == 0:
+        #         self.click_我的按钮()
+        #         break
+        time.sleep(10)
+        for i in range(4):
+            a = self.get_screenSize()
+            x = a[0] * 0.0333
+            y = a[1] * 0.1
+            TouchAction(self.driver).tap(x=x, y=y).perform()
+            time.sleep(1)
+        self.click_我的按钮()
+
+    def tc_后置回行程(self):
+        # for i in range(10):
+        #     j = self.jde_返回按钮()
+        #     if j == 1:
+        #         self.click_返回按钮("后置返回")
+        #     elif j == 0:
+        #         self.click_我的按钮()
+        #         break
+        time.sleep(10)
+        for i in range(4):
+            a = self.get_screenSize()
+            x = a[0] * 0.0333
+            y = a[1] * 0.1
+            TouchAction(self.driver).tap(x=x, y=y).perform()
+            time.sleep(1)
+        self.click_行程()
+
 
     def scroll_page_one_time( self, direction="up" ):
         """
@@ -166,28 +232,34 @@ class common(baseView):
         else:
             raise Exception("请检查参数是否正确，up/down/left/right")
 
-    def find_element_with_scroll( self, text, direction="up" ):
-        """
-        边滑边找 某个元素的特征
-        :param feature: 元素的特征
-        :param direction: 方向
-            "up"：从下往上
-            "down"：从上往下
-            "right"：从左往右
-            "left"：从右往左
-        :return:
-        """
+    def find_loc_with_scroll(self, text ):
+        """向上滑动找元素"""
+        nums = 0
+        while True:
+            btn = self.get_toast(text)
+            if btn == 0:
+                self.act_上滑()
+                nums += 1
+                if nums == 5:
+                    break
+            else:
+                self.click_点击(loc_text(text), "点击" + text)
+                break
+
+
+
+    def find_text_with_scroll( self, text ):
         page_source = ""
         while True:
             try:
-                return self.get_toast(text)
-            except Exception:
+                return loc_contains_text(text)
+            except :
 
-                self.scroll_page_one_time(direction)
+                self.act_上滑()
 
                 if self.driver.page_source == page_source:
                     print("到底了")
-                    break
+                    return False
                 page_source = self.driver.page_source
 
     # 获取屏幕尺寸
@@ -239,7 +311,14 @@ class common(baseView):
             info = self.click_点击(loc_text("{}".format(i)), "输入{}".format(i))
             if info == 0:
                 logging.error("键盘" + i + "找不到!")
-        self.click_退出键盘()
+        # self.click_退出键盘()
+
+    # def click_关闭分享行程(self):
+    #     time.sleep(5)
+    #     a = self.get_screenSize()
+    #     x = a[0] * 0.5
+    #     y = a[1] * 0.7812
+    #     return TouchAction(self.driver).tap(x=x, y=y).perform()
 
     # 向左滑动
     def act_左滑(self):
@@ -261,6 +340,7 @@ class common(baseView):
 
     # 向上滑动
     def act_上滑(self, times=1):
+        time.sleep(3)
         self.wait_隐式等待(20)
         for i in range(times):
             logging.info('向上滑动屏幕')
@@ -272,6 +352,7 @@ class common(baseView):
 
     # 向上滑动
     def act_下滑(self, times=1):
+        time.sleep(1)
         for i in range(times):
             logging.info('向下滑动屏幕')
             l = self.get_screenSize()
@@ -279,7 +360,7 @@ class common(baseView):
             y1 = int(l[1] * 0.2)
             y2 = int(l[1] * 0.8)
             self.act_滑动(x, y1, x, y2, 1)
-
+        time.sleep(5)
 
 
     # 获取Excel数据方法封装

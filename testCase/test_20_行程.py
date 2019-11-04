@@ -7,6 +7,7 @@ class tc_行程(st_首页):
         dr = page_行程(self.driver)
         dr.click_行程()
 
+
     def test_1_添加行程弹出选择框(self):
         dr = page_行程(self.driver)
         dr.click_行程_添加行程()
@@ -19,8 +20,8 @@ class tc_行程(st_首页):
         dr.click_行程_添加行程()
         dr.click_行程_手动添加()
         dr = page_添加行程(self.driver)
-        a=dr.get_添加行程_车次查询()
-        self.myEq(a,1,"test_2_手动添加行程跳转到关注行程页")
+        a=dr.get_toast("扫火车票")
+        self.myEq(a,"扫火车票","test_2_手动添加行程跳转到关注行程页")
 
 
     def tearDown(self):

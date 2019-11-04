@@ -9,22 +9,27 @@ class page_首页(common):
     "焦点"
     btn_首页_焦点 = loc_id("com.tencent.mm:id/ut")
 
+    btn_关闭分享 = loc_id("AThome5")
+
     "页面标题"
     txt_车站通_标题 = loc_text("车站通")
 
     "顶部模块栏位(城市和天气按钮)"
-    btn_切换站点 = loc_child_TtoCT_Number("wx8d75e764f0c4bf1c:pages/tabBar/station/index.html:VISIBLE", "站", 0)
-    btn_首页_天气页面 = loc_contains_text("℃")
-
+    btn_切换站点 = loc_child_IDtoC_Number("AThome6","android.widget.Image",0)
+    # btn_切换站点 = loc_text("切换站点")
+    # btn_首页_天气页面 = loc_contains_text("℃")
+    btn_首页_天气页面= loc_child_IDtoC_Number("AThome6", "android.widget.Image", 1)
     "站点切换提示"
     txt_首页_站点切换提示 = loc_start_text("定位显示您在")
     btn_首页_切换站点按钮 = loc_start_text("切换到")
 
     "banner图"
-    btn_首页_banner_1=loc_child_TtoC_Number("wx8d75e764f0c4bf1c:pages/tabBar/station/index.html:VISIBLE","android.widget.Image",2)
+    btn_首页_banner_1=loc_text("可横向滚动")
     btn_点击查看车站流量 = loc_text("点击查看车站流量")
 
     "菜单模块阵列下面的按钮"
+    btn_车站大屏 = loc_text("车站大屏")
+    btn_余票查询 = loc_text("余票查询")
     btn_更多服务 = loc_text("更多服务")
     txt_更多服务 = loc_text("更多服务")
 
@@ -36,19 +41,21 @@ class page_首页(common):
     txt_首页_时刻查询模块名 = loc_text("时刻查询")
     txt_请输入正确的车次号_toast = loc_text("请输入正确的车次号")
     btn_出发时间_今天 = loc_text("今天")
-    btn_车次号输入框 = loc_start_text("车次号")
-    btn_首页_时刻查询_扫码 = loc_class_instance("android.widget.Button", 0)
-    btn_首页_切换起始站点 = loc_class_instance("android.widget.Image", 10)
+    # btn_车次号输入框 = loc_start_text("车次号")
+    btn_车次号输入框 = loc_text("车次号")
+    btn_首页_时刻查询_扫码 = loc_child_IDtoC_Number("AThome8","android.widget.Button", 0)
+    btn_首页_切换起始站点 = loc_child_IDtoC_Number("AThome8", "android.widget.Image",0 )
     # btn_首页_切换起始站点 = loc_child_TtoCT_Number("wx8d75e764f0c4bf1c:pages/tabBar/station/index.html:VISIBLE","android.widget.Image", 10)
     btn_首页_车次查询 = loc_text("车次查询")
     btn_首页_站站查询 = loc_text("站站查询")
+    btn_首页_查询 = loc_text("查询")
     btn_关注车次信息 = loc_text("关注车次信息")
     btn_武汉 = loc_text("武汉")
     btn_站站查询_默认北京 = loc_text("北京")
     btn_出发时间月日 = loc_contains_text_instance("日", 0)
     btn_出发时间星期 = loc_contains_text("星期")
-    txt_车次号输入框示例 = loc_start_text("车次号 例如")
-    btn_首页_时刻查询_查询 = loc_text("查询")
+    txt_车次号输入框示例 = loc_start_text("例如: G520")
+    btn_分享行程 = loc_text("分享行程")
 
     " 车站大屏 "
     txt_首页_车站大屏模块名 = loc_text_instance("车站大屏",0)
@@ -67,7 +74,7 @@ class page_首页(common):
     btn_首页站内商业_进站后 = loc_text_instance("进站后",0)
 
     "商铺"
-    btn_首页_车站商业进站前1号位 = loc_text("便民超市")
+    btn_首页_车站商业进站前1号位 = loc_text("百货超市")
     btn_首页_车站商业进站后1号位 = loc_text("平价自选商店")
 
     "=====更多服务====="
@@ -85,10 +92,15 @@ class page_首页(common):
 
     "首页焦点"
 
+    def click_余票查询( self ):
+        return self.click_点击(self.btn_余票查询, "btn_余票查询")
+
     def click_首页_焦点(self):
         return self.click_点击(self.btn_首页_焦点, "btn_首页_焦点")
 
     "顶部模块"
+    def click_关闭分享(self):
+        return self.click_点击(self.btn_关闭分享,"关闭分享")
 
     def click_首页_切换站点按钮(self):
         return self.click_点击(self.btn_切换站点, "btn_切换站点")
@@ -121,6 +133,8 @@ class page_首页(common):
         return self.click_点击(self.btn_更多服务, "btn_更多服务")
 
     "功能菜单"
+    def click_车站大屏(self):
+        return self.click_点击(self.btn_车站大屏, "btn_车站大屏")
 
     def click_更多服务(self):
         return self.click_点击(self.btn_更多服务, "btn_更多服务")
@@ -144,6 +158,9 @@ class page_首页(common):
 
         get_requests(path)
 
+    def click_分享行程(self):
+        return self.click_点击(self.btn_分享行程, "btn_分享行程")
+
 
 
 
@@ -159,6 +176,7 @@ class page_首页(common):
         return self.click_点击(self.btn_首页_切换起始站点, "btn_首页_切换起始站点")
 
     def click_出发时间_今天(self):
+        # return self.find_loc_with_scroll("今天")
         return self.click_点击(self.btn_出发时间_今天, "btn_出发时间_今天")
 
     def click_首页_车次查询(self):
@@ -174,9 +192,11 @@ class page_首页(common):
         return self.get_元素文本(self.txt_请输入正确的车次号_toast, "txt_请输入正确的车次号_toast")
 
     def click_首页_时刻查询_查询(self):
-        return self.click_点击(self.btn_首页_时刻查询_查询, "btn_时刻查询_查询")
+        # return self.find_loc_with_scroll("查询")
+        return self.click_点击(self.btn_首页_查询, "btn_时刻查询_查询")
 
     def click_首页_站站查询(self):
+        # btn_首页_站站查询 = self.find_loc_with_scroll("站站查询")
         return self.click_点击(self.btn_首页_站站查询, "btn_站站查询")
 
     def click_关注车次信息(self):
@@ -250,15 +270,19 @@ class page_首页(common):
     "==========首页底部服务页面=========="
 
     def click_首页军人优先(self):
+        # btn_首页军人优先 = self.find_loc_with_scroll("军人优先")
         return self.click_点击(self.btn_首页军人优先, "btn_首页军人优先")
 
     def click_首页服务评价(self):
+        # btn_首页服务评价 = self.find_loc_with_scroll("服务评价")
         return self.click_点击(self.btn_首页服务评价, "btn_首页服务评价")
 
     def click_首页常见问题(self):
+        # btn_首页常见问题 = self.find_loc_with_scroll("常见问题")
         return self.click_点击(self.btn_首页常见问题, "btn_首页常见问题")
 
     def click_首页关于我们(self):
+        # btn_首页关于我们 = self.find_loc_with_scroll("关于我们")
         return self.click_点击(self.btn_首页关于我们, "btn_首页关于我们")
 
     "====================业务层====================="
@@ -276,7 +300,7 @@ if __name__ == '__main__':
     # dr = page_首页(driver)
     # dr.click_首页_切换站点提示按钮()
     # dr.click_首页_切换站点按钮()
-    path = "/galaxy/schedule/getUserNearestScheduleAli"
+    path = r"/galaxy/schedule/getUserNearestScheduleAli"
 
     a= get_requests(path)
     print(a)
