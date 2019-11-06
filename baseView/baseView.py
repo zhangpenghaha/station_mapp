@@ -2,6 +2,7 @@
 import logging
 import time
 import os
+from common.loc import *
 from selenium.common.exceptions import TimeoutException
 from selenium.common.exceptions import NoSuchElementException
 from selenium.webdriver.support.ui import WebDriverWait
@@ -32,8 +33,34 @@ class baseView(object):
         else:
             return self.driver.find_element_by_android_uiautomator(loc)
 
+    def get_加载中(self):
+        i = 0
+        while True:
+            if i == 60:
+                return
+            try:
+                i += 1
+                WebDriverWait(self.driver, 0.5).until(lambda x: x.find_element_by_android_uiautomator(loc_text("加载中")))
+            except TimeoutException:
+                return
+
+    def get_重新加载(self):
+        i = 0
+        while True:
+            if i == 60:
+                return
+            try:
+                i += 1
+                WebDriverWait(self.driver, 0.5).until(lambda x: x.find_element_by_android_uiautomator(loc_text("重新加载 ")))
+                self.driver.find_element_by_android_uiautomator(loc_text("重新加载 ")).click()
+            except TimeoutException:
+                return
+
+
+
     def click_点击(self, loc, info):
-        time.sleep(7)
+        self.get_重新加载()
+        self.get_加载中()
         logging.info("点击" + info + "!")
         try:
             WebDriverWait(self.driver, 15).until(lambda x: x.find_element_by_android_uiautomator(loc))
@@ -54,6 +81,8 @@ class baseView(object):
         return self.driver.switch_to.context('NATIVE_APP')
 
     def send_输入(self, loc, info, mes):
+        self.get_重新加载()
+        self.get_加载中()
         logging.info(info + "输入" + mes + "!")
         try:
             WebDriverWait(self.driver, 12).until(lambda x: x.find_element_by_android_uiautomator(loc))
@@ -65,6 +94,8 @@ class baseView(object):
             return 1
 
     def get_元素文本(self, loc, info,timeout=15):
+        self.get_重新加载()
+        self.get_加载中()
         logging.info("获取" + info + "!")
         try:
             WebDriverWait(self.driver, timeout).until(lambda x: x.find_element_by_android_uiautomator(loc))

@@ -1,0 +1,21 @@
+<ns0:test-suite xmlns:ns0="urn:model.allure.qatools.yandex.ru" start="1572948115680" stop="1572948442204">
+  <name>testCase.test_5_站内商业</name>
+  <labels/>
+  <test-cases>
+    <test-case start="1572948115680" status="passed" stop="1572948442204">
+      <name>tc_站内商业.test_314_单条件筛选_进站前后_进站前</name>
+      <attachments>
+        <attachment source="b1df809c-b9f9-4c4b-8b73-a65b1b52325a-attachment.txt" title="Captured log setup" type="text/plain"/>
+        <attachment source="461a787e-5881-444f-acb3-cc441fddfbf2-attachment.txt" title="Captured log call" type="text/plain"/>
+      </attachments>
+      <labels>
+        <label name="severity" value="normal"/>
+        <label name="thread" value="12416-MainThread"/>
+        <label name="host" value="WIN-NPMSMCDMRF4"/>
+        <label name="framework" value="pytest"/>
+        <label name="language" value="cpython3"/>
+      </labels>
+      <steps/>
+    </test-case>
+  </test-cases>
+</ns0:test-suite>

@@ -95,22 +95,6 @@ class tc_行程(st_首页):
             self.myEq(test_toast, a, "test站站查询绑定正确跨天车次")
 
 
-        # if if_success == "error_城市搜索框":
-        #     dr = Page_选择城市(self.driver)
-        #     dr.click_点击城市搜索框()
-        #     dr.send_城市搜索框(test_出发地)
-        #     a = dr.get_toast(test_toast)
-        #     self.myEq(test_toast, a, "test站站查询城市搜索输入错误")
-
-
-
-    # @parameterized.expand(read_excel("test_data.xlsx", "checichaxun"))
-    # def test_4_查看行程( self, test_车次, test_data, test_起始站, test_终点站, if_success, test_toast ):
-    #     dr = page_行程(self.driver)
-    #     if if_success == "success":
-    #         i = str(test_data).split(".")[0]
-    #         a = dr.scoll_滑动找车次信息(i + "天后出发")
-    #         self.myEq(i + "天后出发", a, "查找添加的车次信息")
 
 
     def test_5_删除行程( self ):

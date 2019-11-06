@@ -10,7 +10,7 @@ class page_车站大屏(page_首页):
         "wx8d75e764f0c4bf1c:pages/station/pages/stationLargeScreen/index.html:VISIBLE", "android.view.View", 1)
 
     btn_车站大屏_候车=loc_text("候车")
-    btn_车站大屏_到达=loc_text("到达")
+    btn_车站大屏_到达=loc_child_TtoT("wx8d75e764f0c4bf1c:pages/station/pages/stationLargeScreen/index.html:VISIBLE", "到达")
     text_输入框文案=loc_text("请输入要查询的车次号")
     text_以上信息仅供参考文案 = loc_text("以上信息仅供参考，实际情况以车站公告为准")
 

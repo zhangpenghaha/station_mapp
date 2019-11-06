@@ -7,7 +7,7 @@ import logging
 
 
 class tc_填写评论(st_首页):
-    @classmethod
+
     @classmethod
     def setUpClass( cls ):
         dr = page_填写评论(cls.driver)

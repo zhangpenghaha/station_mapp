@@ -13,6 +13,8 @@ from appium.webdriver.common.touch_action import TouchAction
 class common(baseView):
     "定位器"
     "弹窗"
+    btn_重新加载 = loc_text("请求失败，请重试")
+    btn_加载中 = loc_text("加载中")
     btn_确定添加 = loc_text("确定添加")
     btn_确认添加 = loc_text("确认添加")
     btn_确定 = loc_text("确定")
@@ -51,6 +53,8 @@ class common(baseView):
     def get_text(self, toast_tip):
         return self.get_元素文本(loc_text(toast_tip), "获取" + toast_tip + "文本")
     def get_toast(self,toast_tip):
+        self.get_重新加载()
+        self.get_加载中()
         return self.get_元素文本(loc_text(toast_tip), "toast_提示:" + toast_tip)
     def get_toast_byid(self):
         return self.get_元素文本(loc_id_instance("com.tencent.mm:id/d0",0), "toast_提示")
@@ -140,7 +144,7 @@ class common(baseView):
             x = a[0] * 0.0333
             y = a[1] * 0.1
             TouchAction(self.driver).tap(x=x, y=y).perform()
-            time.sleep(2)
+            time.sleep(1)
         self.click_首页()
 
     def tc_后置回我的(self):
@@ -370,6 +374,8 @@ class common(baseView):
             cell_A = str(table.cell(row - 1, col - 1).value)
             test_data = cell_A.split(',')
             return test_data
+
+
 
 
 
