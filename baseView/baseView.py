@@ -40,7 +40,7 @@ class baseView(object):
                 return
             try:
                 i += 1
-                WebDriverWait(self.driver, 0.5).until(lambda x: x.find_element_by_android_uiautomator(loc_text("加载中")))
+                WebDriverWait(self.driver,1).until(lambda x: x.find_element_by_android_uiautomator(loc_text("加载中")))
             except TimeoutException:
                 return
 
@@ -51,7 +51,7 @@ class baseView(object):
                 return
             try:
                 i += 1
-                WebDriverWait(self.driver, 0.5).until(lambda x: x.find_element_by_android_uiautomator(loc_text("重新加载 ")))
+                WebDriverWait(self.driver,1).until(lambda x: x.find_element_by_android_uiautomator(loc_text("重新加载 ")))
                 self.driver.find_element_by_android_uiautomator(loc_text("重新加载 ")).click()
             except TimeoutException:
                 return

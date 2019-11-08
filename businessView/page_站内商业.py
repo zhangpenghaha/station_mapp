@@ -23,8 +23,8 @@ class page_站内商业(page_首页):
 
 
     "站内商业赛选按钮,展开后"
-    btn_进站前 = loc_text("进站前")
-    btn_进站后 = loc_text("进站后")
+    btn_进站前 = loc_text_instance("进站前", 1)
+    btn_进站后 = loc_text_instance("进站后", 1)
     btn_站内商业_筛选展开_1=loc_child_IDtoC_Number("screen","android.view.View",14)
     btn_站内商业_筛选展开_2=loc_child_IDtoC_Number("screen","android.view.View",15)
     btn_站内商业_筛选展开_3=loc_child_IDtoC_Number("screen","android.view.View",16)
