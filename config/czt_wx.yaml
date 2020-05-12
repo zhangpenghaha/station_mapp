@@ -15,13 +15,13 @@ platformName: Android
 #udid: 8FS7N16916007633
 #deviceName: HUAWEI P9 Plus
 
-#udid: c485aa18
-#deviceName: Mi Note 3
-#platformVersion: 8.1.0
+udid: c485aa18
+deviceName: Mi Note 3
+platformVersion: 8.1.0
 
-udid: LE67A06170270823
-deviceName: Le X620
-platformVersion: 6.0
+#udid: LE67A06170270823
+#deviceName: Le X620
+#platformVersion: 6.0
 #udid: 192.168.100.107:5555
 
 

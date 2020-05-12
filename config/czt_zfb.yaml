@@ -19,19 +19,13 @@ platformVersion: 6.0
 
 
 
-
-
-
 appname: cxjz.apk
 noReset: True
 unicodeKeyboard: True
 resetKeyboard: True
-
 automationName: uiautomator2
-
 fullReset: False
 chromeOptions: {'androidProcess': 'com.tencent.mm:appbrand0'}
-
 appPackage: com.eg.android.AlipayGphone
 appActivity: com.eg.android.AlipayGphone.AlipayLogin
 ip: 127.0.0.1

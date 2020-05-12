@@ -41,7 +41,6 @@ class tc_首页(st_首页):
 
         dr = page_选择日期(self.driver)
         dr.click_选择几天后日期(test_days)
-
         dr = page_余票查询(self.driver)
         dr.click_余票查询_查询()
         a = dr.get_toast(test_toast)
